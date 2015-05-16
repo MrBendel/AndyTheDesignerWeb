@@ -1,0 +1,705 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "props";
+@import "mixins";
+
+/* ==========================================================================
+   Custom styles.
+   ========================================================================== */
+
+.transform-origin-default {
+  @include transform-origin(50%, 50%);
+}
+
+.transform-origin-top {
+  @include transform-origin(50%, top);
+}
+
+.transform-origin-bottom {
+  @include transform-origin(50%, bottom);
+}
+
+.transition-all-cubic-ease-out {
+  @include transition();
+}
+
+.transition-all-back-ease-out {
+  @include transition(all, 0.3s, $ease-out-back);
+}
+
+body {
+  color: #eee;
+  margin: 0;
+  padding: 0;
+
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica Neue','Helvetica', sans-serif;
+  font-size: 14px/16px;
+  letter-spacing: 0;
+
+   text-rendering: optimizeLegibility;
+
+  @include background-radial-gradient($color-blue-light, $color-blue-dark, 10%);
+}
+
+.lock-position {
+  overflow: hidden !important;
+}
+
+.body-blur-it {
+  .wrap,
+  .top-menu {
+    @include blur(10px);
+  }
+}
+
+.unselectable {
+    @include unselectable
+}
+
+.blurred-background-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  @include blur(10px);
+}
+
+/*-----*/
+
+.top-menu {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: 64px;
+  margin-right: 64px;
+
+  
+}
+
+.title-bar {
+  @include flex();
+  @include flex-align(center);
+  @include perspective(500px);
+
+  position: relative;
+
+  border-bottom: 1px dotted rgba(black, 0.2);
+
+  .title-initial-state {
+    opacity: 0;
+    @include transform(rotateX(-90deg));
+  }
+
+  .title {
+    @include transform-origin(50%, top);
+    @include transition(all, 0.3s, $ease-out-back);
+
+    font-weight: normal;
+    font-size: 48px;
+    cursor: pointer;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    font-family: 'UV Sharp Sans No1 Bold'; 
+    letter-spacing: -1.5px;
+
+    &:hover, &:active, &:focus {
+      opacity: 0.75;
+      @include transform(rotateX(-30deg));
+    }
+  }
+}
+
+.title-bar #twitter {
+  position: absolute;
+  font-size: 10px;
+  right: 0;
+  bottom: 26px;
+}
+
+.quote-box {
+  @include flex(column);
+  @include flex-align(center);
+  @include transition(all, 0.5s, $ease-out-back);
+
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background-color: rgba(white, 0.05);
+  font-family: $font-nixie;
+
+  h1 {
+    cursor: default;
+    font-family: $font-geotica;
+    font-size: 64px;
+
+    div {
+      display: inline-block;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      @include transition();
+      &:hover {
+        &+div {
+          opacity: 0.65;
+        }
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .flex-container {
+    @include flex(row);
+    @include flex-align(center);
+    width: 100%;
+    // padding-top: 8px;
+
+    div {
+      display: inline-block;
+      @include flex-grow-shrink(1, 0);
+    }
+
+    p {
+      max-width: 80%;
+      @include flex-grow(3);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 140%;
+    }
+  }
+}
+
+.menu-bar {
+  position: relative;
+  overflow: hidden;
+
+  ol {
+    @include flex();
+    @include flex-align(center);
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-bar-item {
+    padding: 16px 0px 16px 0px;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+  }
+
+  .spacer {
+    @extend .menu-bar-item;
+    @include flex-grow-shrink(1, 0);
+    background-color: rgba(black ,0.15);
+  }
+
+  li {
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+    font-family: $font-sharp-sans-no1-book;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+
+    @include flex-grow(2);
+    @include perspective(200px);
+
+    .title-top,
+    .title-front {
+      @extend .menu-bar-item;
+      @include transition();
+    }
+
+    .title-front {
+      position: relative;
+      background-color: rgba(black, 0.15);
+      @include transform-origin(50%, top);
+    }
+
+    .title-top {
+      position: absolute;
+      width: 100%;
+      background-color: #ccc;
+      opacity: 0;
+
+      @include transform(translate3d(0, -100%, 0) rotateX(90deg));
+      @include transform-origin(50%, bottom);
+      @include blur(5px);
+    }
+
+    &:hover, &:active, &:focus {
+      .title-front {
+        background-color: black;
+        opacity: 0;
+
+        @include transform(translate3d(0, 100%, 0) rotateX(-90deg));
+        @include blur(5px);
+      }
+
+      .title-top {
+        background-color: #033142;
+        opacity: 1;
+
+        @include transform(translate3d(0, 0, 0) rotateX(0deg));
+        @include filter(none);
+      }
+    }
+  }
+}
+
+/* ==== */
+
+.wrap {
+   position: relative;
+   overflow: hidden;
+   background-color: rgba(0,0,0,0.25);
+   margin-left: 64px;
+   margin-right: 64px;
+}
+
+#gallery {
+  position: relative;
+  margin: 16px;
+  
+  .clear {
+    clear: left;
+  }
+
+  .start {
+    &:not(:first-child) {
+      color: black;
+      padding-top: 24px;
+    }
+  }
+}
+
+.project-tag {
+  position: relative;
+  display: inline-block;
+  border: 3px solid #eee;
+  margin: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  overflow: hidden;
+
+  -moz-osx-font-smoothing: grayscale;
+  @include transform(translateZ(0));
+  @include backface-visibility(hidden);
+  @include transition(all, 0.3s, $ease-out-cubic);
+
+  border: 3px solid rgba(black, 0.25);
+  color: rgba(black, 0.5);
+  text-shadow: 0px 1px rgba(white, 0.1);
+  @include shadow(0, 1px, 0px, 0px, rgba(white, 0.1));
+
+  h1 {
+    font-size: 24px;
+    font-family: $font-sharp-sans-no1-bold;
+    letter-spacing: -0.5px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(black, 0.2);
+    @include border-radius(100%);
+    @include transform(scale(0));
+    @include transition(transform, 0.2s, ease-out);
+    @include blur(5px);
+  }
+
+  &:hover, &:focus, &:active {
+    &:before {
+      @include transition-duration(0.4s);
+      @include transform(scale(2));
+    }
+
+    border: 3px solid rgba(black, 0.2);
+    color: #eee;
+    text-shadow: 0px 1px rgba(black, 0.7);
+    @include shadow(0, 1px, 0px, 0px, rgba(white, 0.06));
+  }
+}
+
+.box {
+   float: left;
+   display: inline-block;
+   position: relative;
+   width: 25%;
+   padding-bottom: 25%;
+   cursor: pointer;
+   z-index: 0;
+
+   @include perspective(800px);
+}
+
+.box-front-face,
+.box-back-face {
+   position: absolute;
+   left: 16px;
+   right: 16px;
+   top: 16px;
+   bottom: 16px;
+   overflow: hidden;
+
+   border: 8px solid white;
+
+   @include backface-visibility(hidden);
+   @include transition(all, 0.3s, $ease-out-cubic);
+   @include box-sizing();
+
+   img {
+    width: 100%;
+   }
+}
+
+.box-back-face {
+  @include transform(rotateX(180deg));
+  @include shadow(0, 70px, 30px, -40px);
+  @include flex(column);
+  @include flex-align(center);
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    @include blur(10px);
+  }
+
+  h1 {
+    font-family: $font-sharp-sans-no1-bold;
+    font-size: 32px;
+    letter-spacing: -1px;
+    padding:0px 16px 4px 16px;
+    border-bottom: 1px dotted rgba(white, 0.5);
+  }
+
+  p {
+    padding:8px 16px 0px 16px;
+    font-family: $font-copernicus;
+    font-style: italic;
+    font-size: 15px;
+  }
+}
+
+.box-initial-state {
+  .box-front-face {
+    opacity: 0;
+    @include transform(rotateX(-90deg));
+  }
+}
+
+.box-initial-state-active {
+  .box-front-face,
+  .box-back-face {
+    @include transform-origin(50%, top);
+    @include transition(all, 0.3s, $ease-out-back);
+  }
+}
+
+.box-rollover {
+  &:hover, &:active, &:focus {
+    .box-front-face,
+    .box-back-face {
+      @include transition(all, 0.7s, $ease-out-back);
+    }
+    .box-front-face {
+      @include transform(rotateX(180deg));
+    }
+    .box-back-face {
+      @include transform(rotateX(0deg));
+    }
+
+    @include transform(scale(1.1, 1.1));
+    z-index: 1000;
+  }
+}
+
+/*body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {*/
+   /*margin-bottom: 0;*/
+/*}*/
+
+@media only screen and (max-width : 480px) {
+   /* Smartphone view: 1 tile */
+   /*.box {
+      width: 100%;
+      padding-bottom: 100%;
+   }*/
+}
+@media only screen and (max-width : 650px) and (min-width : 481px) {
+   /* Tablet view: 2 tiles */
+   /*.box {
+      width: 50%;
+      padding-bottom: 50%;
+   }*/
+}
+@media only screen and (max-width : 1050px) and (min-width : 651px) {
+   /* Small desktop / ipad view: 3 tiles */
+   /*.box {
+      width: 33.3%;
+      padding-bottom: 33.3%;
+   }*/
+}
+@media only screen and (max-width : 1290px) and (min-width : 1051px) {
+   /* Medium desktop: 4 tiles */
+   /*.box {
+      width: 33.3%;
+      padding-bottom: 33.3%;
+   }*/
+}
+
+/* --- Project Specific Stuff --- */
+
+.project-background {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background-color: rgba(adjust-lightness($color-blue-dark, -10%), 0.85);
+  @include transform-origin(50%, top);
+  @include transition();
+}
+
+.project-background-initial-state {
+    @include transform(scaleY(0));
+}
+
+
+.project {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3000;
+  overflow: hidden;
+  @include transition(height);
+
+  ol {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    li {
+      position: absolute;
+      left:50%;
+      top:50%;
+      display: block;
+      background-color: rgba(cyan, 0.5);
+      overflow: hidden;
+      opacity: 0;
+
+      @include border-radius(6px);
+      @include transform(translate(-50%, -50%));
+
+      img {
+          position:absolute;
+          display:block;
+          left:50%;
+          top:50%;
+          min-width:100%;
+          min-height:100%;
+          width: auto;
+          height: auto;
+          opacity: 0;
+          @include transform(translate(-50%, -50%));
+          @include transition(opacity);
+          @include unselectable;
+      }
+    }
+
+    .li-transition-opacity {
+      @include transition(opacity);
+    }
+
+    .li-transition-all {
+      @include transition();
+    }
+  }
+  // end ol
+}
+
+.project-close {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.project-navigation {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+}
+
+.project-button {
+  display: block;
+  width: 54px;
+  height: 54px;
+  z-index: 4000;
+  cursor: pointer;
+
+  margin: 24px;
+  text-align: center;
+  vertical-align: bottom;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+  border: 1px solid transparent;
+
+  -moz-osx-font-smoothing: grayscale;
+  @include backface-visibility(hidden);
+  @include box-sizing();
+  @include border-radius(100%);
+  @include transition();
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(white, 0.5);
+    @include border-radius(100%);
+    @include transform(scale(0.75));
+    @include transition();
+  }
+
+  &:hover, &:focus, &:active {
+    border: 1px solid white;
+
+    &:before {
+      background: white;
+      @include transform(scale(0.9));
+    }
+    
+    i {
+      &:nth-child(1) {
+        @include blur(10px);
+        @include transform(translate(-300%, -50%));
+      }
+      &:nth-child(2) {
+        opacity: 1;
+        @include blur(0px);
+        @include transform(translate(-50%, -50%));
+      }
+
+      // custom arrow
+      &.fa-arrow-left:nth-child(1) {
+        @include blur(10px);
+        @include transform(translate(-300%, -50%));
+      }
+      &.fa-arrow-left:nth-child(2) {
+        opacity: 1;
+        @include blur(0px);
+        @include transform(translate(-52%, -50%));
+      }
+      // custom arrow
+      &.fa-arrow-right:nth-child(1) {
+        @include blur(10px);
+        @include transform(translate(200%, -50%));
+      }
+      &.fa-arrow-right:nth-child(2) {
+        opacity: 1;
+        @include blur(0px);
+        @include transform(translate(-48%, -50%));
+      }
+      // custom times sign
+      &.fa-times:nth-child(1) {
+        @include blur(10px);
+        @include transform(translate(-49%, -50%) scale(3,3));
+        opacity: 0;
+      }
+      &.fa-times:nth-child(2) {
+        @include blur(0px);
+        @include transform(translate(-49%, -50%) scale(1,1));
+        opacity: 1;
+      }
+    }
+  }
+  // end :hover, :focus, :active
+
+  i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    color: $color-blue-dark;
+    @include transition();
+
+    &:first-child {
+      @include blur(0px);
+      text-shadow: 0px 1px rgba(white, 0.5);
+      @include transform(translate(-50%, -50%));
+    }
+
+    &:nth-child(2) {
+      @include blur(10px);
+      @include transform(translate(200%, -50%));
+    }
+
+    // custom arrow
+    &.fa-arrow-left:nth-child(1) {
+      @include blur(0px);
+      text-shadow: 0px 1px rgba(white, 0.5);
+      @include transform(translate(-52%, -50%));
+    }
+    &.fa-arrow-left:nth-child(2) {
+      @include blur(10px);
+      @include transform(translate(200%, -50%));
+    }
+    &.fa-arrow-right:nth-child(1) {
+      @include blur(0px);
+      text-shadow: 0px 1px rgba(white, 0.5);
+      @include transform(translate(-48%, -50%));
+    }
+    &.fa-arrow-right:nth-child(2) {
+      @include blur(10px);
+      @include transform(translate(-300%, -50%));
+    }
+    // custom times sign
+    &.fa-times:nth-child(1) {
+      @include transform(translate(-49%, -50%) scale(1,1));
+    }
+    &.fa-times:nth-child(2) {
+      @include blur(10px);
+      @include transform(translate(-49%, -50%) scale(0,0));
+      opacity: 0;
+    }
+  }
+  // end i
+}
+// .close end
+
+.project-close-initial-state {
+  @include transform(translate(-100px, 0));
+}

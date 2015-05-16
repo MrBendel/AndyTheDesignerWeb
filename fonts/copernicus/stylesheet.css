@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Galaxie Copernicus';
+  src: url('GalaxieCopernicus-Book.eot'); /* IE9 Compat Modes */
+  src: url('GalaxieCopernicus-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('GalaxieCopernicus-Book.woff') format('woff'), /* Modern Browsers */
+       url('GalaxieCopernicus-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('GalaxieCopernicus-Book.svg#e38a3208d0813a382ab28eed4449d484') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: 'Galaxie Copernicus';
+  src: url('GalaxieCopernicus-BookItalic.eot'); /* IE9 Compat Modes */
+  src: url('GalaxieCopernicus-BookItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('GalaxieCopernicus-BookItalic.woff') format('woff'), /* Modern Browsers */
+       url('GalaxieCopernicus-BookItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('GalaxieCopernicus-BookItalic.svg#10541365a7c67b174fb9a30eddeb4d45') format('svg'); /* Legacy iOS */
+       
+  font-style:   italic;
+  font-weight:  400;
+}
+

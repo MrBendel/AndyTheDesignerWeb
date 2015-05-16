@@ -1,0 +1,160 @@
+{
+	"title" : "Andy Poes | Portfolio",
+	"quotebox" : {
+		"title" : "&ldquo;Think. Build. Design.&rdquo;",
+		"text" : "I am a multi-disciplinary designer with a focus on the ooh's and ahh's in life. I think conceptually. I build cool stuff. Check out the projects I've worked on. Reach out if you're interested in what I can do for you."
+	},
+	"imagepath" : "images/",
+	"menu" : [
+		{
+			"color" : "#DF8735"
+		},
+		{
+			"title" : "Projects",
+			"color" : "#C86351"
+		},
+		{
+			"title" : "About Me",
+			"color" : "#A36EB2"
+		},
+		{
+			"title" : "Get In Touch",
+			"color" : "#598AC2"
+		},
+		{
+			"color" : "#61AE6D"
+		}
+	],
+	"portfolio" : [
+		{
+			"title" : "iOS UX/UI",
+			"projects" : [
+				{
+					"src" : "oliver-001.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-002.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-003.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-004.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-005.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-006.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-007.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				}
+			]
+		},
+		{
+			"title" : "Web Work",
+			"projects" : [
+				{
+					"src" : "oliver-004.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-005.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-006.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-012.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-013.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				}
+			]
+		},
+		{
+			"title" : "Design Work",
+			"projects" : [
+				{
+					"src" : "oliver-007.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-008.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-009.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-001.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-002.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-010.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				}
+			]
+		},
+		{
+			"title" : "Undergrad Porfolio",
+			"projects" : [
+				{
+					"src" : "oliver-010.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-011.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-012.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				},
+				{
+					"src" : "oliver-013.jpg",
+					"title" : "Project Title",
+					"text" : "iOS Developer (2014)"
+				}
+			]
+		}
+	]
+}

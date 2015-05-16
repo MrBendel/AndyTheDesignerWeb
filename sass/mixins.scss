@@ -1,0 +1,180 @@
+@mixin background-radial-gradient($color1, $color2, $color1Start:0%, $color2Start:100%) {
+  background: $color2;
+  background: -webkit-radial-gradient($color1 $color1Start, $color2 $color2Start); /* Safari 5.1-6.0 */
+  background: -o-radial-gradient($color1 $color1Start, $color2 $color2Start); /* For Opera 11.6-12.0 */
+  background: -moz-radial-gradient($color1 $color1Start, $color2 $color2Start); /* For Firefox 3.6-15 */
+  background: radial-gradient($color1 $color1Start, $color2 $color2Start); /* Standard syntax */
+}
+
+@mixin background-linear-gradient($color1, $color2, $angle:0deg, $color1Start:0%, $color2Start:100%) {
+  background: $color2;
+  background: -webkit-linear-gradient($angle, $color1 $color1Start, $color2 $color2Start); /* Safari 5.1-6.0 */
+  background: -o-linear-gradient($angle, $color1 $color1Start, $color2 $color2Start); /* For Opera 11.6-12.0 */
+  background: -moz-linear-gradient($angle, $color1Start, $color2 $color2Start); /* For Firefox 3.6-15 */
+  background: linear-gradient($angle, $color1Start, $color2 $color2Start); /* Standard syntax */
+}
+
+@mixin transform-origin($originX, $originY) {
+  -webkit-transform-origin: $originX $originY;
+     -moz-transform-origin: $originX $originY;
+      -ms-transform-origin: $originX $originY;
+       -o-transform-origin: $originX $originY;
+          transform-origin: $originX $originY;
+}
+
+@mixin backface-visibility($hidden) {
+  -webkit-backface-visibility: $hidden;
+     -moz-backface-visibility: $hidden;
+      -ms-backface-visibility: $hidden;
+          backface-visibility: $hidden;
+}
+
+@mixin transition($prop:all, $duration:0.3s, $ease:$ease-out-cubic) {
+  @if $prop == "transform" {
+    -webkit-transition: -webkit- + $prop $duration $ease;
+       -moz-transition: -moz- + $prop $duration $ease;
+        -ms-transition: -ms- + $prop $duration $ease;
+         -o-transition: -o- + $prop $duration $ease;
+  } @else {
+    -webkit-transition: $prop $duration $ease;  
+       -moz-transition: $prop $duration $ease;
+        -ms-transition: $prop $duration $ease;
+         -o-transition: $prop $duration $ease;
+  }
+  
+  transition: $prop $duration $ease;
+}
+
+@mixin transition-duration($duration) {
+  -webkit-transition-duration: $duration !important;
+     -moz-transition-duration: $duration !important;
+      -ms-transition-duration: $duration !important;
+       -o-transition-duration: $duration !important;
+          transition-duration: $duration !important;
+}
+
+@mixin flex($flow:row, $wrap:no-wrap) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: $flow;
+     -moz-flex-flow: $flow;
+      -ms-flex-flow: $flow;
+          flex-flow: $flow;
+
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+@mixin flex-align($align:flex-start) {
+  -webkit-align-items: $align;
+     -moz-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+
+  -webkit-justify-content: $align;
+     -moz-justify-content: $align;
+      -ms-justify-content: $align;
+          justify-content: $align;
+}
+
+@mixin flex-align-self($align:flex-start) {
+  -webkit-align-self: $align;
+     -moz-align-self: $align;
+      -ms-align-self: $align;
+          align-self: $align;
+}
+
+@mixin flex-grow($value) {
+  -webkit-flex-grow: $value;
+     -moz-flex-grow: $value;
+      -ms-flex-grow: $value;
+          flex-grow: $value;
+}
+
+@mixin flex-shrink($value) {
+  -webkit-flex-shrink: $value;
+     -moz-flex-shrink: $value;
+      -ms-flex-shrink: $value;
+          flex-shrink: $value;
+}
+
+@mixin flex-grow-shrink($grow, $shrink) {
+  @include flex-grow($grow);
+  @include flex-shrink($shrink);
+}
+
+@mixin perspective($perspective) {
+  -webkit-perspective: $perspective;
+     -moz-perspective: $perspective;
+      -ms-perspective: $perspective;
+          perspective: $perspective;
+}
+
+@mixin filter($filter:none) {
+  -webkit-filter: $filter; 
+  -moz-filter: $filter; 
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  filter: $filter;
+}
+
+@mixin blur($amount) {
+  @include filter(blur($amount));
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+     -moz-transform: $transform;
+      -ms-transform: $transform;
+       -o-transform: $transform;
+          transform: $transform;
+}
+
+@mixin box-sizing($sizing:border-box) {
+   -webkit-box-sizing:$sizing;
+      -moz-box-sizing:$sizing;
+           box-sizing:$sizing;
+}
+
+@mixin shadow($dx:0, $dy:0, $blurRadius:0, $blurSpread:0, $shadowColor:rgba(black,0.5) ) {
+   -webkit-box-shadow: $dx $dy $blurRadius $blurSpread $shadowColor;
+   -moz-box-shadow: $dx $dy $blurRadius $blurSpread $shadowColor;
+   box-shadow: $dx $dy $blurRadius $blurSpread $shadowColor;
+}
+
+@mixin background-size($prop1, $prop2:"") {
+  -webkit-background-size: $prop1 unquote($prop2);
+     -moz-background-size: $prop1 unquote($prop2);
+       -o-background-size: $prop1 unquote($prop2);
+          background-size: $prop1 unquote($prop2);
+}
+
+@mixin background-clip($clip) {
+  -webkit-background-clip: $clip;
+     -moz-background-clip: $clip;
+          background-clip: $clip;
+}
+
+@mixin border-radius($rad) {
+  -webkit-border-radius:$rad;
+     -moz-border-radius:$rad;
+          border-radius:$rad;
+}
+
+@mixin unselectable() {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+    /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+    -webkit-user-select: none;
+       -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */ 
+        -ms-user-select: none; /* From IE10 only */
+            user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+            user-drag: none;
+}

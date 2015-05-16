@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Ashbury-Light';
+  src: url('AshburyLig.eot'); /* IE9 Compat Modes */
+  src: url('AshburyLig.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('AshburyLig.woff') format('woff'), /* Modern Browsers */
+       url('AshburyLig.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('AshburyLig.svg#81338f92d5632292dc9293ff05b6bee7') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}

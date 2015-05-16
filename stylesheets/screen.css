@@ -1,0 +1,1277 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* ==========================================================================
+   Custom styles.
+   ========================================================================== */
+/* line 14, ../sass/screen.scss */
+.transform-origin-default {
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+/* line 18, ../sass/screen.scss */
+.transform-origin-top {
+  -webkit-transform-origin: 50% top;
+  -moz-transform-origin: 50% top;
+  -ms-transform-origin: 50% top;
+  -o-transform-origin: 50% top;
+  transform-origin: 50% top;
+}
+
+/* line 22, ../sass/screen.scss */
+.transform-origin-bottom {
+  -webkit-transform-origin: 50% bottom;
+  -moz-transform-origin: 50% bottom;
+  -ms-transform-origin: 50% bottom;
+  -o-transform-origin: 50% bottom;
+  transform-origin: 50% bottom;
+}
+
+/* line 26, ../sass/screen.scss */
+.transition-all-cubic-ease-out {
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* line 30, ../sass/screen.scss */
+.transition-all-back-ease-out {
+  -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* line 34, ../sass/screen.scss */
+body {
+  color: #eee;
+  margin: 0;
+  padding: 0;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica Neue','Helvetica', sans-serif;
+  font-size: 14px/16px;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  background: #033142;
+  background: -webkit-radial-gradient(#1488bb 10%, #033142 100%);
+  /* Safari 5.1-6.0 */
+  background: -o-radial-gradient(#1488bb 10%, #033142 100%);
+  /* For Opera 11.6-12.0 */
+  background: -moz-radial-gradient(#1488bb 10%, #033142 100%);
+  /* For Firefox 3.6-15 */
+  background: radial-gradient(#1488bb 10%, #033142 100%);
+  /* Standard syntax */
+}
+
+/* line 48, ../sass/screen.scss */
+.lock-position {
+  overflow: hidden !important;
+}
+
+/* line 53, ../sass/screen.scss */
+.body-blur-it .wrap,
+.body-blur-it .top-menu {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+/* line 59, ../sass/screen.scss */
+.unselectable {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -ms-user-select: none;
+  /* From IE10 only */
+  user-select: none;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
+/* line 63, ../sass/screen.scss */
+.blurred-background-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+/*-----*/
+/* line 79, ../sass/screen.scss */
+.top-menu {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+/* line 90, ../sass/screen.scss */
+.title-bar {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  -moz-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-flex-wrap: no-wrap;
+  -moz-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  -ms-perspective: 500px;
+  perspective: 500px;
+  position: relative;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+}
+/* line 99, ../sass/screen.scss */
+.title-bar .title-initial-state {
+  opacity: 0;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+/* line 104, ../sass/screen.scss */
+.title-bar .title {
+  -webkit-transform-origin: 50% top;
+  -moz-transform-origin: 50% top;
+  -ms-transform-origin: 50% top;
+  -o-transform-origin: 50% top;
+  transform-origin: 50% top;
+  -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: normal;
+  font-size: 48px;
+  cursor: pointer;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-family: 'UV Sharp Sans No1 Bold';
+  letter-spacing: -1.5px;
+}
+/* line 118, ../sass/screen.scss */
+.title-bar .title:hover, .title-bar .title:active, .title-bar .title:focus {
+  opacity: 0.75;
+  -webkit-transform: rotateX(-30deg);
+  -moz-transform: rotateX(-30deg);
+  -ms-transform: rotateX(-30deg);
+  -o-transform: rotateX(-30deg);
+  transform: rotateX(-30deg);
+}
+
+/* line 125, ../sass/screen.scss */
+.title-bar #twitter {
+  position: absolute;
+  font-size: 10px;
+  right: 0;
+  bottom: 26px;
+}
+
+/* line 132, ../sass/screen.scss */
+.quote-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column;
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-flex-wrap: no-wrap;
+  -moz-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-family: "Nixie One", Georgia, Times, serif;
+}
+/* line 144, ../sass/screen.scss */
+.quote-box h1 {
+  cursor: default;
+  font-family: "Geotica Three", Georgia, Times, serif;
+  font-size: 64px;
+}
+/* line 149, ../sass/screen.scss */
+.quote-box h1 div {
+  display: inline-block;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 154, ../sass/screen.scss */
+.quote-box h1 div:hover {
+  opacity: 0.4;
+}
+/* line 155, ../sass/screen.scss */
+.quote-box h1 div:hover + div {
+  opacity: 0.65;
+}
+/* line 163, ../sass/screen.scss */
+.quote-box .flex-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  -moz-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-flex-wrap: no-wrap;
+  -moz-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+/* line 169, ../sass/screen.scss */
+.quote-box .flex-container div {
+  display: inline-block;
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -moz-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+}
+/* line 174, ../sass/screen.scss */
+.quote-box .flex-container p {
+  max-width: 80%;
+  -webkit-flex-grow: 3;
+  -moz-flex-grow: 3;
+  -ms-flex-grow: 3;
+  flex-grow: 3;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 140%;
+}
+
+/* line 184, ../sass/screen.scss */
+.menu-bar {
+  position: relative;
+  overflow: hidden;
+}
+/* line 188, ../sass/screen.scss */
+.menu-bar ol {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  -moz-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-flex-wrap: no-wrap;
+  -moz-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 197, ../sass/screen.scss */
+.menu-bar .menu-bar-item, .menu-bar .spacer, .menu-bar li .title-top,
+.menu-bar li .title-front {
+  padding: 16px 0px 16px 0px;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+}
+/* line 203, ../sass/screen.scss */
+.menu-bar .spacer {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -moz-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+/* line 209, ../sass/screen.scss */
+.menu-bar li {
+  text-align: center;
+  z-index: 1;
+  cursor: pointer;
+  font-family: "UV Sharp Sans No1 Book", HelveticaNeue-Light, Helvetica, sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  -webkit-flex-grow: 2;
+  -moz-flex-grow: 2;
+  -ms-flex-grow: 2;
+  flex-grow: 2;
+  -webkit-perspective: 200px;
+  -moz-perspective: 200px;
+  -ms-perspective: 200px;
+  perspective: 200px;
+}
+/* line 220, ../sass/screen.scss */
+.menu-bar li .title-top,
+.menu-bar li .title-front {
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 226, ../sass/screen.scss */
+.menu-bar li .title-front {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-transform-origin: 50% top;
+  -moz-transform-origin: 50% top;
+  -ms-transform-origin: 50% top;
+  -o-transform-origin: 50% top;
+  transform-origin: 50% top;
+}
+/* line 232, ../sass/screen.scss */
+.menu-bar li .title-top {
+  position: absolute;
+  width: 100%;
+  background-color: #ccc;
+  opacity: 0;
+  -webkit-transform: translate3d(0, -100%, 0) rotateX(90deg);
+  -moz-transform: translate3d(0, -100%, 0) rotateX(90deg);
+  -ms-transform: translate3d(0, -100%, 0) rotateX(90deg);
+  -o-transform: translate3d(0, -100%, 0) rotateX(90deg);
+  transform: translate3d(0, -100%, 0) rotateX(90deg);
+  -webkit-transform-origin: 50% bottom;
+  -moz-transform-origin: 50% bottom;
+  -ms-transform-origin: 50% bottom;
+  -o-transform-origin: 50% bottom;
+  transform-origin: 50% bottom;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+/* line 244, ../sass/screen.scss */
+.menu-bar li:hover .title-front, .menu-bar li:active .title-front, .menu-bar li:focus .title-front {
+  background-color: black;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0) rotateX(-90deg);
+  -moz-transform: translate3d(0, 100%, 0) rotateX(-90deg);
+  -ms-transform: translate3d(0, 100%, 0) rotateX(-90deg);
+  -o-transform: translate3d(0, 100%, 0) rotateX(-90deg);
+  transform: translate3d(0, 100%, 0) rotateX(-90deg);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+/* line 252, ../sass/screen.scss */
+.menu-bar li:hover .title-top, .menu-bar li:active .title-top, .menu-bar li:focus .title-top {
+  background-color: #033142;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) rotateX(0deg);
+  -moz-transform: translate3d(0, 0, 0) rotateX(0deg);
+  -ms-transform: translate3d(0, 0, 0) rotateX(0deg);
+  -o-transform: translate3d(0, 0, 0) rotateX(0deg);
+  transform: translate3d(0, 0, 0) rotateX(0deg);
+  -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+/* ==== */
+/* line 265, ../sass/screen.scss */
+.wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+/* line 273, ../sass/screen.scss */
+#gallery {
+  position: relative;
+  margin: 16px;
+}
+/* line 277, ../sass/screen.scss */
+#gallery .clear {
+  clear: left;
+}
+/* line 282, ../sass/screen.scss */
+#gallery .start:not(:first-child) {
+  color: black;
+  padding-top: 24px;
+}
+
+/* line 289, ../sass/screen.scss */
+.project-tag {
+  position: relative;
+  display: inline-block;
+  border: 3px solid #eee;
+  margin: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+  overflow: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  border: 3px solid rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 1px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.1);
+}
+/* line 308, ../sass/screen.scss */
+.project-tag h1 {
+  font-size: 24px;
+  font-family: "UV Sharp Sans No1 Bold", HelveticaNeue-Bold, Helvetica, sans-serif;
+  letter-spacing: -0.5px;
+}
+/* line 314, ../sass/screen.scss */
+.project-tag:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -moz-transition: -moz-transform 0.2s ease-out;
+  -ms-transition: -ms-transform 0.2s ease-out;
+  -o-transition: -o-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+/* line 329, ../sass/screen.scss */
+.project-tag:hover, .project-tag:focus, .project-tag:active {
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  color: #eee;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.06);
+  -moz-box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 0px 0px rgba(255, 255, 255, 0.06);
+}
+/* line 330, ../sass/screen.scss */
+.project-tag:hover:before, .project-tag:focus:before, .project-tag:active:before {
+  -webkit-transition-duration: 0.4s !important;
+  -moz-transition-duration: 0.4s !important;
+  -ms-transition-duration: 0.4s !important;
+  -o-transition-duration: 0.4s !important;
+  transition-duration: 0.4s !important;
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+}
+
+/* line 342, ../sass/screen.scss */
+.box {
+  float: left;
+  display: inline-block;
+  position: relative;
+  width: 25%;
+  padding-bottom: 25%;
+  cursor: pointer;
+  z-index: 0;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  perspective: 800px;
+}
+
+/* line 354, ../sass/screen.scss */
+.box-front-face,
+.box-back-face {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 16px;
+  bottom: 16px;
+  overflow: hidden;
+  border: 8px solid white;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 369, ../sass/screen.scss */
+.box-front-face img,
+.box-back-face img {
+  width: 100%;
+}
+
+/* line 374, ../sass/screen.scss */
+.box-back-face {
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+  -webkit-box-shadow: 0 70px 30px -40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 70px 30px -40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 70px 30px -40px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column;
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-flex-wrap: no-wrap;
+  -moz-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+/* line 380, ../sass/screen.scss */
+.box-back-face img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+/* line 388, ../sass/screen.scss */
+.box-back-face h1 {
+  font-family: "UV Sharp Sans No1 Bold", HelveticaNeue-Bold, Helvetica, sans-serif;
+  font-size: 32px;
+  letter-spacing: -1px;
+  padding: 0px 16px 4px 16px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+/* line 396, ../sass/screen.scss */
+.box-back-face p {
+  padding: 8px 16px 0px 16px;
+  font-family: "Galaxie Copernicus", Georgia, Times, serif;
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* line 405, ../sass/screen.scss */
+.box-initial-state .box-front-face {
+  opacity: 0;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+
+/* line 412, ../sass/screen.scss */
+.box-initial-state-active .box-front-face,
+.box-initial-state-active .box-back-face {
+  -webkit-transform-origin: 50% top;
+  -moz-transform-origin: 50% top;
+  -ms-transform-origin: 50% top;
+  -o-transform-origin: 50% top;
+  transform-origin: 50% top;
+  -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* line 420, ../sass/screen.scss */
+.box-rollover:hover, .box-rollover:active, .box-rollover:focus {
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+  z-index: 1000;
+}
+/* line 421, ../sass/screen.scss */
+.box-rollover:hover .box-front-face,
+.box-rollover:hover .box-back-face, .box-rollover:active .box-front-face,
+.box-rollover:active .box-back-face, .box-rollover:focus .box-front-face,
+.box-rollover:focus .box-back-face {
+  -webkit-transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* line 425, ../sass/screen.scss */
+.box-rollover:hover .box-front-face, .box-rollover:active .box-front-face, .box-rollover:focus .box-front-face {
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+/* line 428, ../sass/screen.scss */
+.box-rollover:hover .box-back-face, .box-rollover:active .box-back-face, .box-rollover:focus .box-back-face {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+/*body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {*/
+/*margin-bottom: 0;*/
+/*}*/
+@media only screen and (max-width: 480px) {
+  /* Smartphone view: 1 tile */
+  /*.box {
+     width: 100%;
+     padding-bottom: 100%;
+  }*/
+}
+@media only screen and (max-width: 650px) and (min-width: 481px) {
+  /* Tablet view: 2 tiles */
+  /*.box {
+     width: 50%;
+     padding-bottom: 50%;
+  }*/
+}
+@media only screen and (max-width: 1050px) and (min-width: 651px) {
+  /* Small desktop / ipad view: 3 tiles */
+  /*.box {
+     width: 33.3%;
+     padding-bottom: 33.3%;
+  }*/
+}
+@media only screen and (max-width: 1290px) and (min-width: 1051px) {
+  /* Medium desktop: 4 tiles */
+  /*.box {
+     width: 33.3%;
+     padding-bottom: 33.3%;
+  }*/
+}
+/* --- Project Specific Stuff --- */
+/* line 472, ../sass/screen.scss */
+.project-background {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background-color: rgba(1, 13, 17, 0.85);
+  -webkit-transform-origin: 50% top;
+  -moz-transform-origin: 50% top;
+  -ms-transform-origin: 50% top;
+  -o-transform-origin: 50% top;
+  transform-origin: 50% top;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* line 485, ../sass/screen.scss */
+.project-background-initial-state {
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -o-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+/* line 490, ../sass/screen.scss */
+.project {
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3000;
+  overflow: hidden;
+  -webkit-transition: height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 503, ../sass/screen.scss */
+.project ol {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+/* line 510, ../sass/screen.scss */
+.project ol li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  background-color: rgba(0, 255, 255, 0.5);
+  overflow: hidden;
+  opacity: 0;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* line 522, ../sass/screen.scss */
+.project ol li img {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -ms-user-select: none;
+  /* From IE10 only */
+  user-select: none;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+/* line 538, ../sass/screen.scss */
+.project ol .li-transition-opacity {
+  -webkit-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 542, ../sass/screen.scss */
+.project ol .li-transition-all {
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* line 549, ../sass/screen.scss */
+.project-close {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* line 555, ../sass/screen.scss */
+.project-navigation {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+}
+
+/* line 562, ../sass/screen.scss */
+.project-button {
+  display: block;
+  width: 54px;
+  height: 54px;
+  z-index: 4000;
+  cursor: pointer;
+  margin: 24px;
+  text-align: center;
+  vertical-align: bottom;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 583, ../sass/screen.scss */
+.project-button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  -o-transform: scale(0.75);
+  transform: scale(0.75);
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 597, ../sass/screen.scss */
+.project-button:hover, .project-button:focus, .project-button:active {
+  border: 1px solid white;
+}
+/* line 600, ../sass/screen.scss */
+.project-button:hover:before, .project-button:focus:before, .project-button:active:before {
+  background: white;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+}
+/* line 606, ../sass/screen.scss */
+.project-button:hover i:nth-child(1), .project-button:focus i:nth-child(1), .project-button:active i:nth-child(1) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(-300%, -50%);
+  -moz-transform: translate(-300%, -50%);
+  -ms-transform: translate(-300%, -50%);
+  -o-transform: translate(-300%, -50%);
+  transform: translate(-300%, -50%);
+}
+/* line 610, ../sass/screen.scss */
+.project-button:hover i:nth-child(2), .project-button:focus i:nth-child(2), .project-button:active i:nth-child(2) {
+  opacity: 1;
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* line 617, ../sass/screen.scss */
+.project-button:hover i.fa-arrow-left:nth-child(1), .project-button:focus i.fa-arrow-left:nth-child(1), .project-button:active i.fa-arrow-left:nth-child(1) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(-300%, -50%);
+  -moz-transform: translate(-300%, -50%);
+  -ms-transform: translate(-300%, -50%);
+  -o-transform: translate(-300%, -50%);
+  transform: translate(-300%, -50%);
+}
+/* line 621, ../sass/screen.scss */
+.project-button:hover i.fa-arrow-left:nth-child(2), .project-button:focus i.fa-arrow-left:nth-child(2), .project-button:active i.fa-arrow-left:nth-child(2) {
+  opacity: 1;
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  -webkit-transform: translate(-52%, -50%);
+  -moz-transform: translate(-52%, -50%);
+  -ms-transform: translate(-52%, -50%);
+  -o-transform: translate(-52%, -50%);
+  transform: translate(-52%, -50%);
+}
+/* line 627, ../sass/screen.scss */
+.project-button:hover i.fa-arrow-right:nth-child(1), .project-button:focus i.fa-arrow-right:nth-child(1), .project-button:active i.fa-arrow-right:nth-child(1) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(200%, -50%);
+  -moz-transform: translate(200%, -50%);
+  -ms-transform: translate(200%, -50%);
+  -o-transform: translate(200%, -50%);
+  transform: translate(200%, -50%);
+}
+/* line 631, ../sass/screen.scss */
+.project-button:hover i.fa-arrow-right:nth-child(2), .project-button:focus i.fa-arrow-right:nth-child(2), .project-button:active i.fa-arrow-right:nth-child(2) {
+  opacity: 1;
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  -webkit-transform: translate(-48%, -50%);
+  -moz-transform: translate(-48%, -50%);
+  -ms-transform: translate(-48%, -50%);
+  -o-transform: translate(-48%, -50%);
+  transform: translate(-48%, -50%);
+}
+/* line 637, ../sass/screen.scss */
+.project-button:hover i.fa-times:nth-child(1), .project-button:focus i.fa-times:nth-child(1), .project-button:active i.fa-times:nth-child(1) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(-49%, -50%) scale(3, 3);
+  -moz-transform: translate(-49%, -50%) scale(3, 3);
+  -ms-transform: translate(-49%, -50%) scale(3, 3);
+  -o-transform: translate(-49%, -50%) scale(3, 3);
+  transform: translate(-49%, -50%) scale(3, 3);
+  opacity: 0;
+}
+/* line 642, ../sass/screen.scss */
+.project-button:hover i.fa-times:nth-child(2), .project-button:focus i.fa-times:nth-child(2), .project-button:active i.fa-times:nth-child(2) {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  -webkit-transform: translate(-49%, -50%) scale(1, 1);
+  -moz-transform: translate(-49%, -50%) scale(1, 1);
+  -ms-transform: translate(-49%, -50%) scale(1, 1);
+  -o-transform: translate(-49%, -50%) scale(1, 1);
+  transform: translate(-49%, -50%) scale(1, 1);
+  opacity: 1;
+}
+/* line 651, ../sass/screen.scss */
+.project-button i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  color: #033142;
+  -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* line 659, ../sass/screen.scss */
+.project-button i:first-child {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* line 665, ../sass/screen.scss */
+.project-button i:nth-child(2) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(200%, -50%);
+  -moz-transform: translate(200%, -50%);
+  -ms-transform: translate(200%, -50%);
+  -o-transform: translate(200%, -50%);
+  transform: translate(200%, -50%);
+}
+/* line 671, ../sass/screen.scss */
+.project-button i.fa-arrow-left:nth-child(1) {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-52%, -50%);
+  -moz-transform: translate(-52%, -50%);
+  -ms-transform: translate(-52%, -50%);
+  -o-transform: translate(-52%, -50%);
+  transform: translate(-52%, -50%);
+}
+/* line 676, ../sass/screen.scss */
+.project-button i.fa-arrow-left:nth-child(2) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(200%, -50%);
+  -moz-transform: translate(200%, -50%);
+  -ms-transform: translate(200%, -50%);
+  -o-transform: translate(200%, -50%);
+  transform: translate(200%, -50%);
+}
+/* line 680, ../sass/screen.scss */
+.project-button i.fa-arrow-right:nth-child(1) {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-48%, -50%);
+  -moz-transform: translate(-48%, -50%);
+  -ms-transform: translate(-48%, -50%);
+  -o-transform: translate(-48%, -50%);
+  transform: translate(-48%, -50%);
+}
+/* line 685, ../sass/screen.scss */
+.project-button i.fa-arrow-right:nth-child(2) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(-300%, -50%);
+  -moz-transform: translate(-300%, -50%);
+  -ms-transform: translate(-300%, -50%);
+  -o-transform: translate(-300%, -50%);
+  transform: translate(-300%, -50%);
+}
+/* line 690, ../sass/screen.scss */
+.project-button i.fa-times:nth-child(1) {
+  -webkit-transform: translate(-49%, -50%) scale(1, 1);
+  -moz-transform: translate(-49%, -50%) scale(1, 1);
+  -ms-transform: translate(-49%, -50%) scale(1, 1);
+  -o-transform: translate(-49%, -50%) scale(1, 1);
+  transform: translate(-49%, -50%) scale(1, 1);
+}
+/* line 693, ../sass/screen.scss */
+.project-button i.fa-times:nth-child(2) {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translate(-49%, -50%) scale(0, 0);
+  -moz-transform: translate(-49%, -50%) scale(0, 0);
+  -ms-transform: translate(-49%, -50%) scale(0, 0);
+  -o-transform: translate(-49%, -50%) scale(0, 0);
+  transform: translate(-49%, -50%) scale(0, 0);
+  opacity: 0;
+}
+
+/* line 703, ../sass/screen.scss */
+.project-close-initial-state {
+  -webkit-transform: translate(-100px, 0);
+  -moz-transform: translate(-100px, 0);
+  -ms-transform: translate(-100px, 0);
+  -o-transform: translate(-100px, 0);
+  transform: translate(-100px, 0);
+}

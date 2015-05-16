@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Nixie One';
+  src: url('NixieOne-Regular.eot'); /* IE9 Compat Modes */
+  src: url('NixieOne-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('NixieOne-Regular.woff') format('woff'), /* Modern Browsers */
+       url('NixieOne-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('NixieOne-Regular.svg#43a7326831960893e947611ec2c57f15') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
