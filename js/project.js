@@ -181,6 +181,26 @@
 				self.onClose(e);
 			});
 
+			$(document).on('keydown', function(e) {
+				console.log(e.keyCode);
+				if(e.keyCode == 37) { // left
+					if (self.transitioning) {
+						return;
+					}
+					self.dragDirection = DragDirection.right;
+					self.nextItemIndex = self.itemIndex - 1;
+					self.prepareAnimation();
+				}
+				else if(e.keyCode == 39) { // right
+					if (self.transitioning) {
+						return;
+					}
+					self.dragDirection = DragDirection.left;
+					self.nextItemIndex = self.itemIndex + 1;
+					self.prepareAnimation();
+				}
+			});
+
 			$(self.navLeft).on(kNotificationClick, function(e) {
 				if (self.transitioning) {
 					return;
@@ -572,17 +592,26 @@
 				$(this).css('opacity', 0);
 			});
 
+			$.each([self.navLeft, self.navRight], function() {
+				$(this).css('opacity', 0);
+			});
+
 	    	var eventTriggered = false;
 	    	$(self.projectBackground).one(kNotificationTransitionEnd, function(e) {
 	    		if (!eventTriggered) {
 	    			eventTriggered = true;
-		    		$(self.projectBackground).remove();
-		    		$(self.project).remove();
-		    		$(self.closeButton).remove();
+
+	    			$.each([self.projectBackground, self.project, self.closeButton, self.navLeft, self.navRight], function() {
+	    				$(this).remove();
+	    			});
 		    		$(self.project).find('ol li').each(function() {
 						$(this).remove();
 					});
 		    		$('body').removeClass('lock-position');
+
+		    		$.each([self.closeButton, self.navLeft, self.navRight], function() {
+		    			$(this).off(kNotificationClick);
+		    		});
 
 		    		self.closeButton = null;
 					self.project = null;
@@ -601,60 +630,6 @@
 				$(self.project).off(mrbendel.TOUCH, self.eventHandlers.touchstart);
 			}
 	    },
-	  //   onClose: function(e) {
-	  //   	var self = this;
-	  //   	// set closed flag
-	  //   	self.isClosed = true;
-	  //   	// remove listeners
-	  //   	$(window).off('resize');
-	  //   	$(window).off('mousewheel');
-
-	  //   	$('body').removeClass('body-blur-it');
-	  //   	$(self.closeButton).addClass('project-close-initial-state');
-	  //   	$(self.projectBackground).addClass('project-background-initial-state');
-
-	  //   	$(self.project).find('ol li').each(function() {
-			// 	$(this).css('opacity', 0);
-			// });
-
-			// $.each([this.navLeft, this.navRight], function() {
-			// 	$(this).css('opacity', 0);
-			// });
-
-	  //   	var eventTriggered = false;
-	  //   	$(self.projectBackground).one(kNotificationTransitionEnd, function(e) {
-	  //   		if (!eventTriggered) {
-	  //   			eventTriggered = true;
-
-	  //   			$.each([this.projectBackground, this.project, this.closeButton, this.navLeft, this.navRight], function() {
-	  //   				$(this).remove();
-	  //   			});
-		 //    		$(self.project).find('ol li').each(function() {
-			// 			$(this).remove();
-			// 		});
-		 //    		$('body').removeClass('lock-position');
-
-		 //    		$.each([self.closeButton, self.navLeft, self.navRight], function() {
-		 //    			$(this).off(kNotificationClick);
-		 //    		});
-
-		 //    		self.closeButton = null;
-			// 		self.project = null;
-			// 		self.projectBackground = null;
-			// 		self.listItems = [];
-			// 		self.imageItems = [];
-			// 		self.itemIndex = 0;
-			// 	}
-	  //   	});
-
-	  //   	// remove interactivity
-	  //   	if (mrbendel.IS_TOUCH) {
-			// 	self.project.removeEventListener(mrbendel.TOUCH, self.eventHandlers.touchstart, true);
-			// } 
-			// else {
-			// 	$(self.project).off(mrbendel.TOUCH, self.eventHandlers.touchstart);
-			// }
-	  //   },
 
 	   createCloseButton: function() {
 	   		var closeButton = mrbendel.newDiv('project-button project-close project-close-initial-state');
