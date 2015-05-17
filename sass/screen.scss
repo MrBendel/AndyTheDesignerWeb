@@ -82,9 +82,7 @@ body {
   left: 0;
   right: 0;
   margin-left: 64px;
-  margin-right: 64px;
-
-  
+  margin-right: 64px;  
 }
 
 .title-bar {
@@ -106,14 +104,13 @@ body {
     @include transition(all, 0.3s, $ease-out-back);
 
     font-weight: normal;
-    font-size: 48px;
+    // font-size: 48px;
     cursor: pointer;
 
     padding-top: 24px;
     padding-bottom: 24px;
 
-    font-family: 'UV Sharp Sans No1 Bold'; 
-    letter-spacing: -1.5px;
+    font-family: 'UV Sharp Sans No1 Bold';
 
     &:hover, &:active, &:focus {
       opacity: 0.75;
@@ -136,7 +133,7 @@ body {
 
   position: relative;
   width: 100%;
-  height: 0;
+  padding-bottom: 36px;
   overflow: hidden;
   background-color: rgba(white, 0.05);
   font-family: $font-nixie;
@@ -144,12 +141,13 @@ body {
   h1 {
     cursor: default;
     font-family: $font-geotica;
+    text-align: center;
     font-size: 64px;
-
+    padding-top: 18px;
+    margin: 24px;
+    
     div {
       display: inline-block;
-      padding-top: 24px;
-      padding-bottom: 24px;
       @include transition();
       &:hover {
         &+div {
@@ -164,7 +162,6 @@ body {
     @include flex(row);
     @include flex-align(center);
     width: 100%;
-    // padding-top: 8px;
 
     div {
       display: inline-block;
@@ -177,6 +174,7 @@ body {
       font-style: italic;
       font-size: 18px;
       line-height: 140%;
+      margin-top: -10px;
     }
   }
 }
@@ -266,13 +264,13 @@ body {
    position: relative;
    overflow: hidden;
    background-color: rgba(0,0,0,0.25);
-   margin-left: 64px;
-   margin-right: 64px;
 }
 
 #gallery {
   position: relative;
-  margin: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
   
   .clear {
     clear: left;
@@ -290,7 +288,8 @@ body {
   position: relative;
   display: inline-block;
   border: 3px solid #eee;
-  margin: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   padding: 8px 16px;
   cursor: pointer;
   overflow: hidden;
@@ -300,8 +299,8 @@ body {
   @include backface-visibility(hidden);
   @include transition(all, 0.3s, $ease-out-cubic);
 
-  border: 3px solid rgba(black, 0.25);
-  color: rgba(black, 0.5);
+  border: 3px solid rgba(white, 0.15);
+  color: rgba(white, 0.3);
   text-shadow: 0px 1px rgba(white, 0.1);
   @include shadow(0, 1px, 0px, 0px, rgba(white, 0.1));
 
@@ -354,13 +353,14 @@ body {
 .box-front-face,
 .box-back-face {
    position: absolute;
-   left: 16px;
-   right: 16px;
-   top: 16px;
-   bottom: 16px;
+   left: 6%;
+   right: 6%;
+   top: 6%;
+   bottom: 6%;
    overflow: hidden;
 
-   border: 8px solid white;
+   border: 6px solid rgba(white, 0.9);
+   @include border-radius(2px);
 
    @include backface-visibility(hidden);
    @include transition(all, 0.3s, $ease-out-cubic);
@@ -434,37 +434,198 @@ body {
   }
 }
 
-/*body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {*/
-   /*margin-bottom: 0;*/
-/*}*/
+@mixin vertical-menu {
+  .menu-bar {
+    ol {
+      @include flex(column);
 
+      .spacer {
+        display: none;
+      }
+
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@mixin gallery-small {
+  #gallery {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .project-tag {
+    margin-left: 1.5%;
+  }
+
+  .box-front-face,
+  .box-back-face {
+     left: 3%;
+     right: 3%;
+     top: 3%;
+     bottom: 3%;
+  }
+}
+
+// Smartphone
 @media only screen and (max-width : 480px) {
-   /* Smartphone view: 1 tile */
-   /*.box {
-      width: 100%;
-      padding-bottom: 100%;
-   }*/
+  .top-menu {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .title-bar {
+    .title {
+      font-size: 40px;
+      letter-spacing: -1.2px;
+    }
+  }
+
+  .quote-box {
+    h1 {
+      font-size: 46px;
+      margin: 16px;
+    }
+
+    .flex-container {
+      p {
+        font-size: 16px;
+        line-height: 140%;
+        text-align: center;
+        margin-top: 0px;
+      }
+    }
+  }
+
+  @include vertical-menu;
+  @include gallery-small;
+
+  .wrap {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .box {
+    width: 100%;
+    padding-bottom: 100%;
+  }
 }
+
+// Tablet / Phone Landscape
 @media only screen and (max-width : 650px) and (min-width : 481px) {
-   /* Tablet view: 2 tiles */
-   /*.box {
-      width: 50%;
-      padding-bottom: 50%;
-   }*/
+  .top-menu {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .title-bar {
+    .title {
+      font-size: 40px;
+      letter-spacing: -1.2px;
+    }
+  }
+
+  .quote-box {
+    h1 {
+      font-size: 46px;
+      margin: 24px;
+
+      div {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+    }
+
+    .flex-container {
+      p {
+        font-size: 16px;
+        line-height: 140%;
+        text-align: center;
+      }
+    }
+  }
+
+  @include vertical-menu;
+  @include gallery-small;
+
+  .wrap {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .box {
+    width: 50%;
+    padding-bottom: 50%;
+  }
 }
+
+// Small Desktop / iPad / iPhone 6
 @media only screen and (max-width : 1050px) and (min-width : 651px) {
-   /* Small desktop / ipad view: 3 tiles */
-   /*.box {
-      width: 33.3%;
-      padding-bottom: 33.3%;
-   }*/
+  .top-menu {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .title-bar {
+    .title {
+      font-size: 40px;
+      letter-spacing: -1.2px;
+    }
+  }
+
+  .quote-box {
+    h1 {
+      font-size: 56px;
+      margin: 24px;
+    }
+  }
+
+  .wrap {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .box {
+    width: 33.3%;
+    padding-bottom: 33.3%;
+  }
+
+  .project-tag {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
 }
-@media only screen and (max-width : 1290px) and (min-width : 1051px) {
-   /* Medium desktop: 4 tiles */
-   /*.box {
-      width: 33.3%;
-      padding-bottom: 33.3%;
-   }*/
+
+// Desktop
+@media only screen and (min-width : 1051px) {
+  .top-menu {
+    margin-left: 64px;
+    margin-right: 64px;
+  }
+
+  .title-bar {
+    .title {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  .wrap {
+    margin-left: 64px;
+    margin-right: 64px;
+  }
+
+  .box {
+    width: 25%;
+    padding-bottom: 25%;
+  }
+
+  .project-tag {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+  }
 }
 
 /* --- Project Specific Stuff --- */
@@ -479,7 +640,7 @@ body {
   z-index: 2000;
   background-color: rgba(adjust-lightness($color-blue-dark, -10%), 0.85);
   @include transform-origin(50%, top);
-  @include transition();
+  @include transition('transform');
 }
 
 .project-background-initial-state {
@@ -522,14 +683,7 @@ body {
       img {
           position:absolute;
           display:block;
-          left:50%;
-          top:50%;
-          min-width:100%;
-          min-height:100%;
-          width: auto;
-          height: auto;
           opacity: 0;
-          @include transform(translate(-50%, -50%));
           @include transition(opacity);
           @include unselectable;
       }
