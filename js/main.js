@@ -64,7 +64,6 @@ var kNotificationClick = "touchstart click";
 
     //Public Property
     mrbendel.ingredient = "Bacon Strips";
-
     //
     // Public functions
     //
@@ -199,7 +198,7 @@ var kNotificationClick = "touchstart click";
                                             projectCount == projects.length) {
                                             introAnimationComplete = true;
                                             self.dispatchAsync(100, function() {
-                                                $('.quote-box').css('height', '300px');
+                                                // $('.quote-box').css('height', '300px');
                                                 $('.box').addClass('box-rollover');
                                             });
                                         }
@@ -219,24 +218,29 @@ var kNotificationClick = "touchstart click";
     function buildQuoteBox(title, text, complete) {
         var h1 = self.newElement('h1');
 
-        var buildStr = "";
-        var character = "";
-        var isCharRun = false;
-        for (var i = 0, len = title.length; i < len; i++) {
-            character = title[i];
-            if (character == "&") {
-                isCharRun = true;
-            } else if (character == ";" && isCharRun) {
-                isCharRun = false;
+        if (!mrbendel.IS_TOUCH) {
+            var buildStr = "";
+            var character = "";
+            var isCharRun = false;
+            for (var i = 0, len = title.length; i < len; i++) {
+                character = title[i];
+                if (character == "&") {
+                    isCharRun = true;
+                } else if (character == ";" && isCharRun) {
+                    isCharRun = false;
+                }
+                buildStr += character;
+                if (!isCharRun) {
+                    var div = self.newElement('div');
+                    $(div).append(buildStr);
+                    $(h1).append(div);
+                    buildStr = "";
+                }
             }
-            buildStr += character;
-            if (!isCharRun) {
-                var div = self.newElement('div');
-                $(div).append(buildStr);
-                $(h1).append(div);
-                buildStr = "";
-            }
+        } else {
+            $(h1).html(title);
         }
+        
 
         var container = self.newDiv('flex-container');
         var spacerLeft = self.newDiv('flex-spacer');
