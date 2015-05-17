@@ -66,10 +66,11 @@
 		    this.lockMouseWheel = false;
 
 	        var self = this;
-	        $(this.contents).on(kNotificationClick, function(e) {
-	        	e.stopPropagation(); e.preventDefault();
-	        	self.onClick(e);
-	        });
+	        
+	        // $(this.contents).on(kNotificationClick, function(e) {
+	        // 	e.stopPropagation(); e.preventDefault();
+	        // 	self.onClick(e);
+	        // });
 	    },
 
 	    onClick: function(e) {
@@ -89,6 +90,11 @@
 			$('body').append(self.closeButton);
 
 	    	$('body').addClass('lock-position');
+	    	if (mrbendel.IS_TOUCH) {
+	    		$('body').on("touchmove", {}, function(event){
+		            event.preventDefault();
+		        });
+	    	}
 
 	    	var ol = mrbendel.newElement('ol');
 	    	for (var i = 1; i <= 4; i++) {
@@ -158,7 +164,8 @@
 	    	
 	    	var fWidth = Math.floor(width * scale * 0.85);
 	    	var fHeight = Math.floor(height * scale * 0.85);
-
+	    	$(img).attr('width', fWidth);
+	    	$(img).attr('height', fHeight);
 	    	$(li).css('width', fWidth);
 	    	$(li).css('height', fHeight);
 	    	li.size.width = fWidth;
@@ -178,6 +185,7 @@
 	    	$('body').addClass('body-blur-it');
 	    	// add the close listener
 			$(self.closeButton).one(kNotificationClick, function(e) {
+				e.stopPropagation(); e.preventDefault();
 				self.onClose(e);
 			});
 
@@ -202,6 +210,7 @@
 			});
 
 			$(self.navLeft).on(kNotificationClick, function(e) {
+				e.stopPropagation(); e.preventDefault();
 				if (self.transitioning) {
 					return;
 				}
@@ -211,6 +220,7 @@
 			});
 
 			$(self.navRight).on(kNotificationClick, function(e) {
+				e.stopPropagation(); e.preventDefault();
 				if (self.transitioning) {
 					return;
 				}
@@ -608,11 +618,13 @@
 						$(this).remove();
 					});
 		    		$('body').removeClass('lock-position');
-
+		    		if (mrbendel.IS_TOUCH) {
+			    		$('body').off('touchmove');
+			    	}
 		    		$.each([self.closeButton, self.navLeft, self.navRight], function() {
 		    			$(this).off(kNotificationClick);
 		    		});
-
+		    		$(document).off('keydown');
 		    		self.closeButton = null;
 					self.project = null;
 					self.projectBackground = null;
