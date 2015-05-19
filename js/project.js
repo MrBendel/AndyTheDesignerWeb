@@ -1,3 +1,5 @@
+var mrbendel_global_project_is_active = false;
+
 (function(mrbendel, $, undefined) {
 // 	$('#buttonId').on('touchstart click', function(e){
 //     e.stopPropagation(); e.preventDefault();
@@ -25,6 +27,14 @@
 	    return true;
 	}
 
+	var getWindowSize = function() {
+		var width = $(window).width();
+		var height = $(window).height();
+		console.log(width, height);
+
+		return { 'width' : width, 'height' : height };
+	}
+
 	DragDirection = {
 		unset 	: 0,
 		left 	: 1,
@@ -46,6 +56,7 @@
 	        this.contents  = container.contents;
 	        this.project = null;
 	        this.projectBackground = null;
+	        this.projectDescription = null;
 	        this.closeButton  = null;
 	        this.navRight = null;
 	        this.navLeft = null;
@@ -60,33 +71,45 @@
 	        this.startPoint;
 	        this.transitioning = false;
 	        this.eventHandlers = {};
+	        this.tapToHideGesture = null;
+	        this.projectDescriptionHidden = false;
 
 	        // mouse wheeling
 	        this.deltas = [null, null, null, null, null, null, null, null, null];
 		    this.lockMouseWheel = false;
 
 	        var self = this;
-	        
-	        // $(this.contents).on(kNotificationClick, function(e) {
-	        // 	e.stopPropagation(); e.preventDefault();
-	        // 	self.onClick(e);
-	        // });
+	        var tap = new mrbendel.TapGestureRecognizer(this.contents);
+	        tap.callback = function(sender) {
+	        	if (sender.state === GestureRecognizerStateRecognized) {
+	        		self.showProject();
+	        	}
+	        };
 	    },
 
-	    onClick: function(e) {
+	    showProject: function() {
+	    	if (mrbendel_global_project_is_active) {
+	    		return;
+	    	}
+
+	    	mrbendel_global_project_is_active = true;
+
 	    	var self = this;
 
 	    	self.project = mrbendel.newDiv('project');
 	    	self.projectBackground = mrbendel.newDiv('project-background project-background-initial-state');
+	    	self.projectDescription = self.createProjectDescription(self.data);
 	    	self.closeButton = self.createCloseButton();
-	    	
 	    	self.navLeft = self.createNavigationButton('left');
 	    	self.navRight = self.createNavigationButton('right');
 
 			$('body').append(self.projectBackground);
 			$('body').append(self.project);
-			$('body').append(self.navLeft);
-			$('body').append(self.navRight);
+			$('body').append(self.projectDescription);
+			if (!mrbendel.IS_TOUCH) {
+				$('body').append(self.navLeft);
+				$('body').append(self.navRight);
+			}
 			$('body').append(self.closeButton);
 
 	    	$('body').addClass('lock-position');
@@ -151,8 +174,7 @@
 	    },
 
 	  	resizeToFitWindow: function(index) {
-	  		var viewWidth = $(window).width();
-	    	var viewHeight = $(window).height();
+	  		var viewSize = getWindowSize();
 	    	var li = this.listItems[index];
 	    	var img = this.imageItems[index];
 	    	var width = 1; height = 1;
@@ -160,7 +182,7 @@
 	    		width = img.naturalWidth;
 	    		height = img.naturalHeight;
 	    	}
-	    	var scale = Math.min(viewWidth / width, viewHeight / height);
+	    	var scale = Math.min(viewSize.width / width, viewSize.height / height);
 	    	
 	    	var fWidth = Math.floor(width * scale * 0.85);
 	    	var fHeight = Math.floor(height * scale * 0.85);
@@ -181,6 +203,9 @@
 			}
 			$(window).resize(resizeHandler);
 
+			// show the project description
+			self.projectDescriptionHidden = false;
+			$(self.projectDescription).removeClass('project-description-initial-state');
 			// blur the background
 	    	$('body').addClass('body-blur-it');
 	    	// add the close listener
@@ -241,47 +266,12 @@
 				$(this.project).mousewheel(mousewheelHandler);
 			}
 
-			self.eventHandlers.touchstart = function(e) {
-				if (self.transitioning) {
-					return;
-				}
-
-				if (mrbendel.IS_TOUCH) {
-					self.project.addEventListener(mrbendel.MOVE, self.eventHandlers.touchmove, true);
-					self.project.addEventListener(mrbendel.RELEASE, self.eventHandlers.touchend, true);
-				} 
-				else {
-					$(self.project).on(mrbendel.MOVE, self.eventHandlers.touchmove);
-					$(self.project).on(mrbendel.RELEASE, self.eventHandlers.touchend);
-				}
-
-				self.handleTouchStart(e);
-			}
-
-			self.eventHandlers.touchmove = function(e) {
-				self.handleTouchMove(e);
-			}
-
-			self.eventHandlers.touchend = function(e) {
-				if (mrbendel.IS_TOUCH) {
-					self.project.removeEventListener(mrbendel.MOVE, self.eventHandlers.touchmove, true);
-					self.project.removeEventListener(mrbendel.RELEASE, self.eventHandlers.touchend, true);
-				} 
-				else {
-					$(self.project).off(mrbendel.MOVE, self.eventHandlers.touchmove);
-					$(self.project).off(mrbendel.RELEASE, self.eventHandlers.touchend);
-				}
-
-				self.handleTouchEnd(e);
-			}
-
 			// add interactivity
-			if (mrbendel.IS_TOUCH) {
-				self.project.addEventListener(mrbendel.TOUCH, self.eventHandlers.touchstart, true);
-			} 
-			else {
-				$(self.project).on(mrbendel.TOUCH, self.eventHandlers.touchstart);
-			}
+			self.eventHandlers.touchstart = this.touchstart.bind(this);
+			self.eventHandlers.touchmove = this.touchmove.bind(this);
+			self.eventHandlers.touchend = this.touchend.bind(this);
+
+			$(self.project).on(mrbendel.TOUCH, self.eventHandlers.touchstart);
 
 			// setup the navigation buttons
 			$.each([this.navLeft, this.navRight], function() {
@@ -349,10 +339,6 @@
 	    },
 
 	    handleMousewheelSwipe: function(e) {
-	    	var li = this.listItems[this.itemIndex];
-	    	var viewWidth = $(window).width();
-	    	var viewHeight = $(window).height();
-
 	    	if (this.dragDirection == DragDirection.unset) {
 	    		if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
 	    			if (e.deltaX > 0) {
@@ -376,9 +362,14 @@
 	    	this.prepareAnimation();
    	    },
 
-   	    handleTouchStart: function(e) {
+   	    touchstart: function(e) {
+   	    	if (this.transitioning) {
+				return;
+			}
+
 			this.translation = new mrbendel.Point();
-   	    	var touch = mrbendel.IS_TOUCH ? e.touches[0] : e;
+   	    	var originalEvent = e.originalEvent;
+			var touch = mrbendel.IS_TOUCH ? originalEvent.targetTouches[0] : e;
 			this.startPoint = new mrbendel.Point(touch.pageX, touch.pageY);
 			this.dragDirection = DragDirection.unset;
 			this.nextItemIndex = -1;
@@ -386,10 +377,15 @@
 			$.each([this.navLeft, this.navRight], function() {
 				$(this).css('opacity', 0);
 			});
+
+			// add additional listeners
+			$(this.project).on(mrbendel.MOVE, this.eventHandlers.touchmove);
+			$(this.project).on(mrbendel.RELEASE, this.eventHandlers.touchend);
    	    },
 
-   	    handleTouchMove: function(e) {
-	   	    var touch = mrbendel.IS_TOUCH ? e.touches[0] : e;
+   	    touchmove: function(e) {
+	   	    var originalEvent = e.originalEvent;
+			var touch = mrbendel.IS_TOUCH ? originalEvent.targetTouches[0] : e;
    	    	var lastTrans = this.translation.copy();
    	    	this.translation.x = touch.pageX - this.startPoint.x;
    	    	this.translation.y = touch.pageY - this.startPoint.y;
@@ -476,22 +472,31 @@
 
 	    	// nex
 	    	if (nex) {
-		    	var viewWidth = $(window).width() * 0.5 + nex.size.width * 0.5;
-		    	var viewHeight = $(window).height();
+	    		var viewSize = getWindowSize();
+	    		viewSize.width = viewSize.width * 0.5 + nex.size.width * 0.5;
 		    	offsetX = -nex.size.width * 0.5;
 		    	offsetY = -nex.size.height * 0.5;
 		    	if (directionIsHorizontal(this.dragDirection)) {
-		    		offsetX += this.translation.x + viewWidth * (this.dragDirection == DragDirection.right ? -1 : 1);
+		    		offsetX += this.translation.x + viewSize.width * (this.dragDirection == DragDirection.right ? -1 : 1);
 		    	} else {
-		    		offsetY += this.translation.y + viewHeight * (this.dragDirection == DragDirection.up ? 1 : -1);
+		    		offsetY += this.translation.y + viewSize.height * (this.dragDirection == DragDirection.up ? 1 : -1);
 		    	}
 		    	$(nex).setTransform('translate('+offsetX+'px,'+offsetY+'px)');
 	    	} else {
 	    		console.log('next index not found: ' + this.nextItemIndex);
 	    	}
+
+	    	// hide on touch
+	    	if (mrbendel.IS_TOUCH && !this.projectDescriptionHidden) {
+	    		this.projectDescriptionHidden = true;
+	    		$(this.projectDescription).addClass('project-description-hidden');
+	    	}
    	    },
 
-   	    handleTouchEnd: function(e) {
+   	    touchend: function(e) {
+   	    	$(this.project).off(mrbendel.MOVE, this.eventHandlers.touchmove);
+			$(this.project).off(mrbendel.RELEASE, this.eventHandlers.touchend);
+
    	    	if (this.dragDirection > DragDirection.unset) {
    	    		var cur = this.listItems[this.itemIndex];
 	   	    	var nex = this.listItems[this.nextItemIndex];
@@ -517,13 +522,12 @@
 	    	$(nex).removeClass('visuallyhidden');
 	    	$(nex).css('opacity', 1);
 
-	    	var viewWidth = $(window).width();
-	    	var viewHeight = $(window).height();
+	    	var viewSize = getWindowSize();
 	    	var offsetX = -nex.size.width * 0.5; offsetY = -nex.size.height * 0.5;
 	    	if (directionIsHorizontal(this.dragDirection)) {
-	    		offsetX += viewWidth * 0.5 * (this.dragDirection == DragDirection.left ? 1 : -1);
+	    		offsetX += viewSize.width * 0.5 * (this.dragDirection == DragDirection.left ? 1 : -1);
 	    	} else if (directionIsVertical(this.dragDirection)) {
-	    		offsetY += viewHeight * 0.5 * (this.dragDirection == DragDirection.up ? 1 : -1);
+	    		offsetY += viewSize.height * 0.5 * (this.dragDirection == DragDirection.up ? 1 : -1);
 	    	}
 	    	$(nex).setTransform('translate('+offsetX+'px,'+offsetY+'px)');
 
@@ -571,19 +575,24 @@
     			}
     		});
 
-    		var viewWidth = $(window).width() * 0.5 + cur.size.width * 0.5;
-	    	var viewHeight = $(window).height() * 0.5 + cur.size.height * 0.5;
+    		var viewSize = getWindowSize();
+    		viewSize.width = viewSize.width * 0.5 + cur.size.width * 0.5;
+    		viewSize.height = viewSize.height * 0.5 + cur.size.height * 0.5;
 	    	offsetX = -cur.size.width * 0.5;
 	    	offsetY = -cur.size.height * 0.5;
 	    	if (directionIsHorizontal(dragDirection)) {
-	    		offsetX += viewWidth * (dragDirection == DragDirection.left ? -1 : 1);
+	    		offsetX += viewSize.width * (dragDirection == DragDirection.left ? -1 : 1);
 	    	} else {
-	    		offsetY += viewHeight * (dragDirection == DragDirection.up ? -1 : 1);
+	    		offsetY += viewSize.height * (dragDirection == DragDirection.up ? -1 : 1);
 	    	}
 	    	$(cur).setTransform('translate('+offsetX+'px,'+offsetY+'px)');
 
 	    	$(cur).css('opacity', 0);
 	    	$(nex).setTransform('translate(-50%,-50%)');
+
+	    	console.log(document.activeElement);
+	    	$(document.activeElement).blur();
+	    	console.log(document.activeElement);
 	    },
 
 	    onClose: function(e) {
@@ -597,12 +606,13 @@
 	    	$('body').removeClass('body-blur-it');
 	    	$(self.closeButton).addClass('project-close-initial-state');
 	    	$(self.projectBackground).addClass('project-background-initial-state');
+	    	$(self.projectDescription).addClass('project-description-initial-state');
 
 	    	$(self.project).find('ol li').each(function() {
 				$(this).css('opacity', 0);
 			});
 
-			$.each([self.navLeft, self.navRight], function() {
+			$.each([self.navLeft, self.navRight, self.projectDescription], function() {
 				$(this).css('opacity', 0);
 			});
 
@@ -611,7 +621,7 @@
 	    		if (!eventTriggered) {
 	    			eventTriggered = true;
 
-	    			$.each([self.projectBackground, self.project, self.closeButton, self.navLeft, self.navRight], function() {
+	    			$.each([self.projectBackground, self.project, self.projectDescription, self.closeButton, self.navLeft, self.navRight], function() {
 	    				$(this).remove();
 	    			});
 		    		$(self.project).find('ol li').each(function() {
@@ -635,15 +645,14 @@
 	    	});
 
 	    	// remove interactivity
-	    	if (mrbendel.IS_TOUCH) {
-				self.project.removeEventListener(mrbendel.TOUCH, self.eventHandlers.touchstart, true);
-			} 
-			else {
-				$(self.project).off(mrbendel.TOUCH, self.eventHandlers.touchstart);
-			}
+	    	$(self.project).off(mrbendel.TOUCH, self.eventHandlers.touchstart);
+	    	$(self.project).off(mrbendel.MOVE, self.eventHandlers.touchmove);
+	    	$(self.project).off(mrbendel.RELEASE, self.eventHandlers.touchend);
+
+			mrbendel_global_project_is_active = false;
 	    },
 
-	   createCloseButton: function() {
+	   	createCloseButton: function() {
 	   		var closeButton = mrbendel.newDiv('project-button project-close project-close-initial-state');
 	    	// var close_icon_x = mrbendel.newElement('i', 'fa fa-arrow-left fa-2x');
 	    	var close_icon_x = mrbendel.newElement('i', 'fa fa-times fa-2x');
@@ -651,11 +660,11 @@
 	    	$(closeButton).append(close_icon_x);
 	    	$(closeButton).append(close_icon_clone);
 	    	return closeButton;
-	   },
+	  	},
 
-	   createNavigationButton: function(leftright) {
+	   	createNavigationButton: function(direction) {
 	   		var button = mrbendel.newDiv('project-button project-navigation');
-	    	var icon = mrbendel.newElement('i', 'fa fa-arrow-' + leftright + ' fa-2x');
+	    	var icon = mrbendel.newElement('i', 'fa fa-arrow-' + direction + ' fa-2x');
 	    	var icon_clone = icon.cloneNode(false);
 	    	$(button).append(icon);
 	    	$(button).append(icon_clone);
@@ -664,18 +673,64 @@
 	    	var marginStyle = $.getStyleForStyleSheet('screen', '.project-button', 'margin');
 	    	var margin = parseInt(marginStyle);
 	    	var width = parseInt(widthStyle);
-
-	    	var viewWidth = $(window).width() * 0.5;
+    		var viewWidth = $(window).width() * 0.5;
 	    	var offsetX = -(width + margin * 2) * 0.5;
-	    	if (leftright === "left") {
+
+	    	if (direction === "left") {
 	    		offsetX -= viewWidth + offsetX;
-	    	} else {
+	    	} else if (direction === "right") {
 	    		offsetX += viewWidth + offsetX;
 	    	}
-	    	$(button).setTransform('translate('+offsetX+'px,-50%)');
+    		$(button).setTransform('translate('+offsetX+'px,-50%)');
 
 	    	return button;
-	   }
+	   	},
+
+	   	createDownButton: function() {
+	   		var button = mrbendel.newDiv('project-button');
+	    	var icon = mrbendel.newElement('i', 'fa fa-arrow-down fa-2x');
+	    	var icon_clone = icon.cloneNode(false);
+	    	$(button).append(icon);
+	    	$(button).append(icon_clone);
+
+	    	return button;
+	   	},
+
+	   	createProjectDescription: function(htmlData) {
+	   		var projectDescription = mrbendel.newDiv('project-description unselectable project-description-initial-state')
+	   		var content = mrbendel.newDiv('content');
+	   		$(content).append('<h1>Project Title</h1><p>This is a description for a project. It should be relatively short, maybe one to two lines at most. Succinct and to the point.</p><a href="http://localhost:8000" target="_blank" data-hover="link bait"><span>link bait</span></a>');
+	   		$(projectDescription).append(content);
+
+	   		var navDow = this.createDownButton();
+	   		$(projectDescription).append(navDow);
+
+	   		var self = this;
+	   		this.tapToHideGesture = new mrbendel.TapGestureRecognizer(projectDescription);
+	   		this.tapToHideGesture.shouldReceiveEvent = function(e) {
+	   			var shouldReceiveEvent = true;
+	   			if (e.target.nodeName == "A") {
+	   				shouldReceiveEvent = false;
+	   			}
+	   			return shouldReceiveEvent;
+	   		}
+	        this.tapToHideGesture.callback = function(sender) {
+	        	if (sender.state === GestureRecognizerStateRecognized) {
+	        		self.toggleProjectDescription();
+	        	}
+	        };
+
+	    	return projectDescription;
+	   	},
+
+	   	toggleProjectDescription: function() {
+	   		if (this.projectDescriptionHidden) {
+	   			$(this.projectDescription).removeClass('project-description-hidden');
+	   		} else {
+	   			$(this.projectDescription).addClass('project-description-hidden');
+	   		}
+	   	  	this.projectDescriptionHidden = !this.projectDescriptionHidden;
+	   	}
 	});
 
 }(window.mrbendel = window.mrbendel || {}, jQuery));
