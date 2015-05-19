@@ -145,7 +145,7 @@ body {
     font-size: 64px;
     padding-top: 18px;
     margin: 24px;
-    
+
     div {
       display: inline-block;
       @include transition();
@@ -372,6 +372,7 @@ body {
 }
 
 .box-back-face {
+  text-align: center;
   @include transform(rotateX(180deg));
   @include shadow(0, 70px, 30px, -40px);
   @include flex(column);
@@ -450,14 +451,14 @@ body {
   }
 }
 
-@mixin gallery-small {
+@mixin gallery-small($paddit) {
   #gallery {
     margin-left: 8px;
     margin-right: 8px;
   }
 
   .project-tag {
-    margin-left: 1.5%;
+    margin-left: $paddit;
   }
 
   .box-front-face,
@@ -500,7 +501,7 @@ body {
   }
 
   @include vertical-menu;
-  @include gallery-small;
+  @include gallery-small(3%);
 
   .wrap {
     margin-left: 0px;
@@ -548,7 +549,7 @@ body {
   }
 
   @include vertical-menu;
-  @include gallery-small;
+  @include gallery-small(1.5%);
 
   .wrap {
     margin-left: 16px;
@@ -562,7 +563,7 @@ body {
 }
 
 // Small Desktop / iPad / iPhone 6
-@media only screen and (max-width : 1050px) and (min-width : 651px) {
+@media only screen and (max-width : 1099px) and (min-width : 651px) {
   .top-menu {
     margin-left: 32px;
     margin-right: 32px;
@@ -592,6 +593,12 @@ body {
     padding-bottom: 33.3%;
   }
 
+  .box-back-face {
+    h1 {
+      max-width: 20vw;
+    }
+  }
+
   .project-tag {
     margin-left: 2%;
     margin-right: 2%;
@@ -599,7 +606,7 @@ body {
 }
 
 // Desktop
-@media only screen and (min-width : 1051px) {
+@media only screen and (min-width : 1100px) {
   .top-menu {
     margin-left: 64px;
     margin-right: 64px;
@@ -620,6 +627,12 @@ body {
   .box {
     width: 25%;
     padding-bottom: 25%;
+  }
+
+  .box-back-face {
+    h1 {
+      max-width: 13vw;
+    }
   }
 
   .project-tag {
@@ -647,6 +660,107 @@ body {
     @include transform(scaleY(0));
 }
 
+.project-description {
+  position: fixed;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgba($color-blue-dark, 0.8);
+  color: #eee;
+  z-index: 4000;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  @include transition();
+
+  &:hover {
+
+  }
+
+  h1, p {
+    padding-left: 36px;
+    padding-right: 36px;
+    @include transition();
+  }
+
+  h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+    font-family: $font-sharp-sans-no1-bold;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 18px;
+    color: #eee;
+    font-family: $font-sharp-sans-no1-book;
+  }
+
+  a, a:before, a:after {
+    font-family: $font-sharp-sans-no1-book;
+    color: #eee;
+    text-align: center;
+    @include box-sizing();
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 36px;
+    margin-top: 16px;
+    letter-spacing: 2px;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    font-size: 14px;
+
+    @include transition();
+
+    span {
+      display: block;
+      padding: 10px 20px;
+      background: $color-blue-light;
+      color: #eee;
+      @include transition('transform');
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      background: #eee;
+      color: $color-blue-dark;
+      content: attr(data-hover);
+      @include transition('transform');
+      @include transform(translate(-25%));
+    }
+
+    &:hover, &:active, &:focus {
+      outline: none;
+
+      span {
+        @include transform(translate(100%));
+      }
+
+      &:before {
+        @include transform(translate(0%));
+      }
+    }
+  }
+}
+
+.project-description-initial-state,
+.project-description-hidden {
+  @include transform(translateY(100%));
+}
 
 .project {
   position: fixed;
