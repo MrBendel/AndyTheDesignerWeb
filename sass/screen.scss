@@ -672,10 +672,27 @@ body {
   z-index: 4000;
   padding-top: 36px;
   padding-bottom: 36px;
-  @include transition();
+  @include transition('transform');
 
   &:hover {
+    .content {
+      @include transform(translateX(36px));
+    }
 
+    .project-button {
+      @include transform(translateX(-14px));
+    }
+  }
+
+  .project-button {
+    position: absolute;left: 0;
+    left: 0;
+    top: 2px;
+    @include transform(translateX(-72px));
+  }
+
+  .content {
+    @include transition();
   }
 
   h1, p {
@@ -760,6 +777,20 @@ body {
 .project-description-initial-state,
 .project-description-hidden {
   @include transform(translateY(100%));
+}
+
+.project-description-hidden {
+  @include transform(translateY(100%));
+
+  .project-button {
+    @include transform(translate(0px, -104px) rotate(180deg));
+  }
+
+  &:hover {
+    .project-button {
+      @include transform(translate(0px, -104px) rotate(180deg));
+    }    
+  }
 }
 
 .project {
@@ -901,6 +932,15 @@ body {
         @include blur(0px);
         @include transform(translate(-48%, -50%));
       }
+      &.fa-arrow-down:nth-child(1) {
+        @include blur(10px);
+        @include transform(translate(-55%, 300%));
+      }
+      &.fa-arrow-down:nth-child(2) {
+        opacity: 1;
+        @include blur(0px);
+        @include transform(translate(-55%, -48%));
+      }
       // custom times sign
       &.fa-times:nth-child(1) {
         @include blur(10px);
@@ -954,6 +994,15 @@ body {
       @include blur(10px);
       @include transform(translate(-300%, -50%));
     }
+    &.fa-arrow-down:nth-child(1) {
+      @include blur(0px);
+      text-shadow: 0px 1px rgba(white, 0.5);
+      @include transform(translate(-55%, -48%));
+    }
+    &.fa-arrow-down:nth-child(2) {
+      @include blur(10px);
+      @include transform(translate(-50%, -300%));
+    }
     // custom times sign
     &.fa-times:nth-child(1) {
       @include transform(translate(-49%, -50%) scale(1,1));
@@ -970,4 +1019,22 @@ body {
 
 .project-close-initial-state {
   @include transform(translate(-100px, 0));
+}
+
+// Smartphone
+@media only screen and (max-width : 480px) {
+  .project-description {
+    h1 {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 120%;
+    }
+
+    a {
+      font-size: 12px;
+    }
+  }
 }
