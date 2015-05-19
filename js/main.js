@@ -176,10 +176,8 @@ var kNotificationClick = "touchstart click";
                     var title = project.title;
                     var text = project.text;
 
-                    buildBox(imagepath + src, title, text, function(box) {
+                    buildBox(imagepath + src, src.split('.')[0], title, text, function(box) {
                         if (box) {
-                        	var project = new mrbendel.Project(w_project, box);
-
                             $("#gallery").append(box.contents);
                             $(box.contents).addClass('box-initial-state');
                             $(box.contents).addClass('box-initial-state-active');
@@ -205,6 +203,9 @@ var kNotificationClick = "touchstart click";
                                     }
                                 });
                             });
+
+                            // last create the project
+                            var project = new mrbendel.Project(w_project, box);
                         }
                     });
                 }
@@ -286,8 +287,7 @@ var kNotificationClick = "touchstart click";
         complete(tag);
     }
 
-    function buildBox(src, title, text, complete) {
-        var id = src.split(".")[0];
+    function buildBox(src, id, title, text, complete) {
         var box = self.newDiv("box", "box-" + id);
         var boxFrontFace = self.newDiv("box-front-face", "boxFrontFace-" + id);
         var boxBackFace = self.newDiv("box-back-face", "boxFrontFace-" + id);
